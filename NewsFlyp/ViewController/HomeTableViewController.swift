@@ -54,29 +54,29 @@ class HomeTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "newCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "newCell", for: indexPath) as! HomeFeedTableViewCell
         
 
-        let titleLabel = cell.viewWithTag(TagForView.titleLabel.rawValue) as? UILabel
-        let descriptionLabel =  cell.viewWithTag(TagForView.description.rawValue) as? UILabel
-        let sourceLabel = cell.viewWithTag(TagForView.source.rawValue) as? UILabel
-        let categoryLabel = cell.viewWithTag(TagForView.category.rawValue) as? UILabel
-        let created_onLabel = cell.viewWithTag(TagForView.created_on.rawValue) as? UILabel
-        let likes = cell.viewWithTag(TagForView.likes.rawValue) as? UILabel
-        var coverImage = cell.viewWithTag(TagForView.image.rawValue) as? UIImage
-        
+//        let titleLabel = cell.viewWithTag(TagForView.titleLabel.rawValue) as? UILabel
+//        let descriptionLabel =  cell.viewWithTag(TagForView.description.rawValue) as? UILabel
+//        let sourceLabel = cell.viewWithTag(TagForView.source.rawValue) as? UILabel
+//        let categoryLabel = cell.viewWithTag(TagForView.category.rawValue) as? UILabel
+//        let created_onLabel = cell.viewWithTag(TagForView.created_on.rawValue) as? UILabel
+//        let likes = cell.viewWithTag(TagForView.likes.rawValue) as? UILabel
+//        var coverImage = cell.viewWithTag(TagForView.image.rawValue) as? UIImage
+//
         
         
         if let feed = newsFeed {
-            titleLabel?.text = feed[indexPath.row].title
-            descriptionLabel?.text = feed[indexPath.row].description
-            sourceLabel?.text = feed[indexPath.row].source
-            categoryLabel?.text = feed[indexPath.row].category
-            created_onLabel?.text = feed[indexPath.row].createdOn
-            likes?.text = feed[indexPath.row].likes
+//            titleLabel?.text = feed[indexPath.row].title
+//            descriptionLabel?.text = feed[indexPath.row].description
+//            sourceLabel?.text = feed[indexPath.row].source
+//            categoryLabel?.text = feed[indexPath.row].category
+//            created_onLabel?.text = feed[indexPath.row].createdOn
+//            likes?.text = feed[indexPath.row].likes
+            cell.updateCellUI(feed: feed[indexPath.row])
             
             
-            coverImage?.images
             
         }
         
