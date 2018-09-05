@@ -1,0 +1,7 @@
+ChangeLog 5Sep_3:03
+1. TableView structure for home Feed created
+2. Codeable Protocol for JSON data from URL JSON Respond 
+3. most of the view are now taged and new enum for tag used 
+
+ChangeLog 5Sep_3:20
+1. Kingfisher cocopod installed

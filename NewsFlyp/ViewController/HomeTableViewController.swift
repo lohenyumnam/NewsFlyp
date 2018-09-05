@@ -7,13 +7,10 @@
 //
 
 import UIKit
+import Kingfisher
 
 class HomeTableViewController: UITableViewController {
     
-    var test = ["1", "2", "1", "2" , "1", "2", "1", "2" , "2", "1", "2" , "1", "2", "1", "2" , "2", "1", "2" , "1", "2", "1", "2"]
-    
-    var descriptionData = "Cras commodo auctor efficitur. Donec eget gravida quam, a faucibus eros. Fusce bibendum finibus eros et fringilla. Aliquam vitae quam sed leo laoreet aliquam ultrices nec nunc. Ut venenatis fermentum dolor quis commodo. Praesent non blandit dui. Nam efficitur ligula ut pellentesque tempor. Nulla id vulputate sapien. Maecenas condimentum molestie pretium Cras commodo auctor efficitur. Donec eget gravida quam, a faucibus eros. Fusce bibendum finibus eros et fringilla. Aliquam vitae quam sed leo laoreet aliquam ultrices nec nunc. Ut venenatis fermentum dolor quis commodo. Praesent non blandit dui. Nam efficitur ligula ut pellentesque tempor. Nulla id vulputate sapien. Maecenas condimentum molestie pretium Cras commodo auctor efficitur. Donec eget gravida quam, a faucibus eros. Fusce bibendum finibus eros et fringilla. Aliquam vitae quam sed leo laoreet aliquam ultrices nec nunc. Ut venenatis fermentum dolor quis commodo. Praesent non blandit dui. Nam efficitur ligula ut pellentesque tempor. Nulla id vulputate sapien. Maecenas condimentum molestie pretium"
-    var titleLabelData = "Curabitur non orci non nibh aliquam porta tempus vel turpis Curabitur non orci non nibh aliquam porta tempus vel turpis"
     
     var newsFeed: [Feed]?
 
@@ -59,15 +56,16 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newCell", for: indexPath)
         
-        //cell.textLabel?.text = test[indexPath.row]
-//        case source = 102
-//        case category = 103
+
         let titleLabel = cell.viewWithTag(TagForView.titleLabel.rawValue) as? UILabel
         let descriptionLabel =  cell.viewWithTag(TagForView.description.rawValue) as? UILabel
         let sourceLabel = cell.viewWithTag(TagForView.source.rawValue) as? UILabel
         let categoryLabel = cell.viewWithTag(TagForView.category.rawValue) as? UILabel
         let created_onLabel = cell.viewWithTag(TagForView.created_on.rawValue) as? UILabel
         let likes = cell.viewWithTag(TagForView.likes.rawValue) as? UILabel
+        var coverImage = cell.viewWithTag(TagForView.image.rawValue) as? UIImage
+        
+        
         
         if let feed = newsFeed {
             titleLabel?.text = feed[indexPath.row].title
@@ -76,6 +74,9 @@ class HomeTableViewController: UITableViewController {
             categoryLabel?.text = feed[indexPath.row].category
             created_onLabel?.text = feed[indexPath.row].createdOn
             likes?.text = feed[indexPath.row].likes
+            
+            
+            coverImage?.images
             
         }
         
