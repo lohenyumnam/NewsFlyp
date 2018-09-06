@@ -10,3 +10,7 @@ ChangeLog 5Sep_4:51PM
 1. Like Button, Fav button are now dynamically chnage base on server data
 2. Image Cover are now, out of stackView and are full width. 
 3. CustomCellView are now implemented, so no need for tag view. 
+
+ChangeLog 6Sep_10:43AM
+1. Remove the for core Tag number implementation
+2. Added Pull to Pull to refresh

@@ -197,6 +197,12 @@
                             <outlet property="delegate" destination="pFK-Nm-K6m" id="Bc7-Gc-Ohv"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="HwF-Ye-tOr">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="pullToRefresh:" destination="pFK-Nm-K6m" eventType="valueChanged" id="9af-aX-kzG"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jjQ-cu-s9O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
