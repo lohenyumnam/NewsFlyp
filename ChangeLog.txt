@@ -14,3 +14,8 @@ ChangeLog 5Sep_4:51PM
 ChangeLog 6Sep_10:43AM
 1. Remove the for core Tag number implementation
 2. Added Pull to Pull to refresh
+
+changeLog 7Sep_7:42PM
+1. added infinity scroll
+2. fixed infinity scroll problem in which tableViewCell jumps up when when new data is added.
+3. tapbar added to complete the UI

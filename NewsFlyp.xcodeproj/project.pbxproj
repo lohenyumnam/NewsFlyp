@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		0A658D25F108B30DF0119840 /* Pods_NewsFlyp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C5D3A4F780ECD9502BF7ED3 /* Pods_NewsFlyp.framework */; };
+		6C03234421422AEB006D34AF /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C03234321422AEA006D34AF /* CustomInfiniteIndicator.swift */; };
+		6C03234621423BE6006D34AF /* FetchResultStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C03234521423BE6006D34AF /* FetchResultStatus.swift */; };
+		6C51C5562142A42100AAFDCD /* UIScrollView+InfiniteScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C51C5542142A42100AAFDCD /* UIScrollView+InfiniteScroll.m */; };
 		6C82866D213FA08E002E03A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82866C213FA08E002E03A7 /* AppDelegate.swift */; };
 		6C828672213FA08E002E03A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C828670213FA08E002E03A7 /* Main.storyboard */; };
 		6C828675213FA08E002E03A7 /* NewsFlyp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6C828673213FA08E002E03A7 /* NewsFlyp.xcdatamodeld */; };
@@ -22,6 +25,11 @@
 
 /* Begin PBXFileReference section */
 		5C5D3A4F780ECD9502BF7ED3 /* Pods_NewsFlyp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsFlyp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6C03234321422AEA006D34AF /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
+		6C03234521423BE6006D34AF /* FetchResultStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FetchResultStatus.swift; path = ../FetchResultStatus.swift; sourceTree = "<group>"; };
+		6C51C5542142A42100AAFDCD /* UIScrollView+InfiniteScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+InfiniteScroll.m"; sourceTree = "<group>"; };
+		6C51C5552142A42100AAFDCD /* UIScrollView+InfiniteScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+InfiniteScroll.h"; sourceTree = "<group>"; };
+		6C51C5572142A45B00AAFDCD /* NewsFlyp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NewsFlyp-Bridging-Header.h"; sourceTree = "<group>"; };
 		6C828669213FA08E002E03A7 /* NewsFlyp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NewsFlyp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6C82866C213FA08E002E03A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		6C828671213FA08E002E03A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -58,6 +66,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6C51C5532142A42100AAFDCD /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				6C51C5542142A42100AAFDCD /* UIScrollView+InfiniteScroll.m */,
+				6C51C5552142A42100AAFDCD /* UIScrollView+InfiniteScroll.h */,
+				6C51C5572142A45B00AAFDCD /* NewsFlyp-Bridging-Header.h */,
+			);
+			name = Classes;
+			path = "../../../../Downloads/UIScrollView-InfiniteScroll-master/Classes";
+			sourceTree = "<group>";
+		};
 		6C828660213FA08E002E03A7 = {
 			isa = PBXGroup;
 			children = (
@@ -79,7 +98,8 @@
 		6C82866B213FA08E002E03A7 /* NewsFlyp */ = {
 			isa = PBXGroup;
 			children = (
-				6C828688213FC1D1002E03A7 /* New Group */,
+				6C51C5532142A42100AAFDCD /* Classes */,
+				6C03234321422AEA006D34AF /* CustomInfiniteIndicator.swift */,
 				6C828685213FC039002E03A7 /* Network */,
 				6C828682213FA45F002E03A7 /* Model */,
 				6C828681213FA455002E03A7 /* ViewController */,
@@ -105,6 +125,7 @@
 		6C828682213FA45F002E03A7 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				6C03234521423BE6006D34AF /* FetchResultStatus.swift */,
 				6C828689213FC1EA002E03A7 /* ApiURL.swift */,
 				6C82868B213FC29A002E03A7 /* HomeFeed.swift */,
 			);
@@ -117,13 +138,6 @@
 				6C828686213FC121002E03A7 /* NetworkController.swift */,
 			);
 			path = Network;
-			sourceTree = "<group>";
-		};
-		6C828688213FC1D1002E03A7 /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
 			sourceTree = "<group>";
 		};
 		FE77E5569A4F74613A1C4522 /* Pods */ = {
@@ -169,6 +183,7 @@
 				TargetAttributes = {
 					6C828668213FA08E002E03A7 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -247,10 +262,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6C03234421422AEB006D34AF /* CustomInfiniteIndicator.swift in Sources */,
 				6C82868C213FC29A002E03A7 /* HomeFeed.swift in Sources */,
+				6C03234621423BE6006D34AF /* FetchResultStatus.swift in Sources */,
 				6C82868A213FC1EA002E03A7 /* ApiURL.swift in Sources */,
 				6C828687213FC121002E03A7 /* NetworkController.swift in Sources */,
 				6C828684213FA47F002E03A7 /* HomeTableViewController.swift in Sources */,
+				6C51C5562142A42100AAFDCD /* UIScrollView+InfiniteScroll.m in Sources */,
 				6C828675213FA08E002E03A7 /* NewsFlyp.xcdatamodeld in Sources */,
 				6CDC7DA3213FDE3300AB781B /* HomeFeedTableViewCell.swift in Sources */,
 				6C82866D213FA08E002E03A7 /* AppDelegate.swift in Sources */,
@@ -398,8 +416,10 @@
 			baseConfigurationReference = 70FAC0588B9458FE31937584 /* Pods-NewsFlyp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 223FTLVCHG;
 				INFOPLIST_FILE = NewsFlyp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -409,6 +429,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobimp.NewsFlyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/lohenyumnam/Downloads/UIScrollView-InfiniteScroll-master/Classes/NewsFlyp-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -419,8 +441,10 @@
 			baseConfigurationReference = 8AD779BF1E20E4BE3594452F /* Pods-NewsFlyp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = "";
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 223FTLVCHG;
 				INFOPLIST_FILE = NewsFlyp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -430,6 +454,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.mobimp.NewsFlyp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/lohenyumnam/Downloads/UIScrollView-InfiniteScroll-master/Classes/NewsFlyp-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

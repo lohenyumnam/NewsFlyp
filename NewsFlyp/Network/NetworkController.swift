@@ -36,7 +36,6 @@ class NetworkController {
     }()
     
     static let shared = NetworkController()
-    //    let imageCache = NSCache<NSString, UIImage>()
     private init(){}
 }
 
@@ -45,7 +44,7 @@ class NetworkController {
 // MARK:- Method to fetch Employees Present today
 extension NetworkController {
     
-    func fetchHomeFeed(completion: @escaping (_ feed: [Feed]?) -> Void){
+    func fetchHomeFeed(withPage page: Int, completion: @escaping (_ feed: [Feed]?, _ status: FetchResultStatus) -> Void){
         // Shows network Activity Indicator on statusbar
         //self.statusActivity = true
         
@@ -56,7 +55,8 @@ extension NetworkController {
             "user" : "1172186799481825", //user ID
             "type" : "news", //type of news
             "q" : "0,18,12,10,8,6,4,1", //categories
-            "page" : "1", //page number
+            //"page" : "1", //page number
+            "page" : "\(page)", //page number
             "p" : "" //search perameters
         ]
         
@@ -64,7 +64,6 @@ extension NetworkController {
         
         var request = URLRequest(url: url)
         request.httpMethod = "GET"
-        //request.allHTTPHeaderFields = [ "Token": Authentication.shared.token! ]
         
         // JSON Decoder to Decode the JSON data that will be fetch by this methode
         let jsonDecoder = JSONDecoder()
@@ -83,42 +82,54 @@ extension NetworkController {
         let task = session.dataTask(with: request) { (data, response, error) in
             
             if let error = error as NSError? {
+                print(error.localizedDescription)
                 if error.code == NSURLErrorNotConnectedToInternet {
                     return
                 }
             }
-            
-            
-            guard let data = data,
-                let response = response as? HTTPURLResponse,
-                response.statusCode == 200 else {
+            guard let data = data else {
                     print("No data or statusCode not OK")
-
+                    completion(nil, FetchResultStatus.noInternetOrServerError)
+                    
                     return
             }
+            
+            
+//            guard let data = data,
+//                let response = response as? HTTPURLResponse,
+//                response.statusCode == 200 else {
+//                    print("No data or statusCode not OK")
+//                    completion(nil, FetchResultStatus.noInternetOrServerError)
+//
+//                    return
+//            }
             
             let jsonData = try? jsonDecoder.decode(HomeFeed.self, from: data)
             
             if jsonData != nil {
                 //completion(jsonData?.records,FetchStatus.success)
                 
-                //print(jsonData)
-                completion(jsonData?.feed)
+//                                print(jsonData)
+                completion(jsonData?.feed, FetchResultStatus.success)
+            } else {
+                print("No data for the current page")
+                completion(nil, FetchResultStatus.fail)
+                
             }
             
-//            else {
-//                guard let stringData = String(data: data, encoding: .utf8) else {return}
-//                if stringData.hasPrefix("Fetch fail"){
-//                    print("Invalid Token")
-//
-//                    //completion(nil,FetchStatus.invalidToken)
-//                } else if stringData.hasPrefix("No Token") {
-//                    print("The Request are done without Token")
-//
-//                    //completion(nil,FetchStatus.noToken)
-//                }
-//
-//            }
+            //            else {
+            //                guard let stringData = String(data: data, encoding: .utf8) else {return}
+            //                if stringData.hasPrefix("Fetch fail"){
+            //                    print("Invalid Token")
+            //
+            //                    //completion(nil,FetchStatus.invalidToken)
+            //                } else if stringData.hasPrefix("No Token") {
+            //                    print("The Request are done without Token")
+            //
+            //                    //completion(nil,FetchStatus.noToken)
+            //                }
+            //
+            //            }
             
             
         }
@@ -126,5 +137,6 @@ extension NetworkController {
         task.resume()
     }
 }
+
 
 
