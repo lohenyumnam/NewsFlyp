@@ -38,10 +38,10 @@ class HomeTableViewController: UITableViewController {
         self.tableView.separatorStyle = .none
 
         
-        if useAutosizingCells && tableView.responds(to: #selector(getter: UIView.layoutMargins)) {
-            tableView.estimatedRowHeight = 88
-            tableView.rowHeight = UITableViewAutomaticDimension
-        }
+//        if useAutosizingCells && tableView.responds(to: #selector(getter: UIView.layoutMargins)) {
+//            tableView.estimatedRowHeight = 88
+//            tableView.rowHeight = UITableViewAutomaticDimension
+//        }
         DispatchQueue.main.async {
             
             // Set custom indicator
@@ -51,10 +51,10 @@ class HomeTableViewController: UITableViewController {
             self.tableView.infiniteScrollIndicatorMargin = 10
             
             // Set custom trigger offset
-            self.tableView.infiniteScrollTriggerOffset = 500
+            self.tableView.infiniteScrollTriggerOffset = 0 //500
         }
         
-        // Add infinite scroll handler
+        // Add infinite scroll handler (fetch the data here for next pages)
         tableView.addInfiniteScroll { [weak self] (tableView) -> Void in
 //            self?.performFetch {
 //                tableView.finishInfiniteScroll()
@@ -93,7 +93,8 @@ class HomeTableViewController: UITableViewController {
         // If there is any current request in progress the function will not progress any further
         guard !isFetchInProgress else { return }
         print(" Current Page: \(currentPage)")
-        isFetchInProgress = true
+        
+        isFetchInProgress = true // telling the fetch is in progress now
         
         NetworkController.shared.fetchHomeFeed(withPage: currentPage) { (feed, fetchResultStatus) in
 
@@ -101,8 +102,8 @@ class HomeTableViewController: UITableViewController {
                 
             case .success :
                 // create new index paths
-                let newsFeedCount = self.newsFeed.count
-                let (start, end) = (newsFeedCount, feed!.count + newsFeedCount)
+                let currentNewsFeedCount = self.newsFeed.count
+                let (start, end) = (currentNewsFeedCount, currentNewsFeedCount + feed!.count)
                 let indexPaths = (start..<end).map { return IndexPath(row: $0, section: 0) }
                 
                 // update data source
@@ -119,8 +120,8 @@ class HomeTableViewController: UITableViewController {
                     self.removeLoadingScreen()
                 }
                 
-                self.isFetchInProgress = false
-                self.currentPage += 1
+                self.isFetchInProgress = false // telling the fetch is done, there is nolonger fetch in progress
+                //self.currentPage += 1
             case .fail :
                 print("No Data")
                 self.isFetchInProgress = false
