@@ -19,3 +19,11 @@ changeLog 7Sep_7:42PM
 1. added infinity scroll
 2. fixed infinity scroll problem in which tableViewCell jumps up when when new data is added.
 3. tapbar added to complete the UI
+4. icon designed and added
+
+changeLog 9Sep_10:32AM
+1. Code CleanUP littel bit
+
+changeLog 12Sep_2:57 PM
+1. News Now show in greater details when tap on the tableView cell
+2. Now able to open the new via safariViewController

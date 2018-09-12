@@ -70,5 +70,17 @@ class HomeFeedTableViewCell: UITableViewCell {
             
         }
     }
-
+    
+    @IBAction func favButtonTapped(_ sender: UIButton) {
+        print("Fav button Tapped")
+        
+    }
+    
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+        print("share Button tapped")
+    }
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        print("Likes Button tapped")
+    }
+    
 }

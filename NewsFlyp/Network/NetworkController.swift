@@ -136,6 +136,94 @@ extension NetworkController {
         
         task.resume()
     }
+    
+    func fetchFeed(withID id: String, completion: @escaping (_ feed: [Feed]?, _ status: FetchResultStatus) -> Void){
+        // Shows network Activity Indicator on statusbar
+        //self.statusActivity = true
+        
+        // Setting up URL request
+        guard let baseUrl = URL(string: ApiURL.getFeedByID.rawValue) else { print("Invalid base URL"); return}
+        
+        let query: [String: String] = [
+            "id" : "\(id)", //News ID
+        ]
+        
+        guard let url = baseUrl.withQueries(query) else { print("Invalid  URL with query"); return}
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        // JSON Decoder to Decode the JSON data that will be fetch by this methode
+        let jsonDecoder = JSONDecoder()
+        
+        //        // Setting up URL Configuration
+        //        let config = URLSessionConfiguration.default
+        //        if #available(iOS 11.0, *) {
+        //            config.waitsForConnectivity = true
+        //        }
+        //        config.allowsCellularAccess = true
+        //
+        //        // Setting up URL session using the above configuration
+        //        let session = URLSession(configuration: config)
+        
+        // dataTask
+        let task = session.dataTask(with: request) { (data, response, error) in
+            
+            if let error = error as NSError? {
+                print(error.localizedDescription)
+                if error.code == NSURLErrorNotConnectedToInternet {
+                    return
+                }
+            }
+//            guard let data = data else {
+//                print("No data or statusCode not OK")
+//                completion(nil, FetchResultStatus.noInternetOrServerError)
+//
+//                return
+//            }
+            
+            
+            guard let data = data,
+                let response = response as? HTTPURLResponse,
+                response.statusCode == 200 else {
+                    print("No data or statusCode not OK")
+                    completion(nil, FetchResultStatus.noInternetOrServerError)
+                    
+                    return
+            }
+            
+            let jsonData = try? jsonDecoder.decode(HomeFeed.self, from: data)
+            
+            if jsonData != nil {
+                //completion(jsonData?.records,FetchStatus.success)
+                
+                //                                print(jsonData)
+                completion(jsonData?.feed, FetchResultStatus.success)
+            } else {
+                print("No data for the current page")
+                completion(nil, FetchResultStatus.fail)
+                
+            }
+            
+            //            else {
+            //                guard let stringData = String(data: data, encoding: .utf8) else {return}
+            //                if stringData.hasPrefix("Fetch fail"){
+            //                    print("Invalid Token")
+            //
+            //                    //completion(nil,FetchStatus.invalidToken)
+            //                } else if stringData.hasPrefix("No Token") {
+            //                    print("The Request are done without Token")
+            //
+            //                    //completion(nil,FetchStatus.noToken)
+            //                }
+            //
+            //            }
+            
+            
+        }
+        
+        task.resume()
+    }
 }
 
 

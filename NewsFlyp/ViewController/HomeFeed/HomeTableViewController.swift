@@ -152,6 +152,27 @@ class HomeTableViewController: UITableViewController {
        return cell
     }
   
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destinationViewController.
+        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goToDetails" {
+            let destination = segue.destination as! DetailsTableViewController
+            guard let indexPath = self.tableView.indexPathForSelectedRow else {return}
+            
+            //destination.newsID = newsFeed[indexPath.row].id
+            destination.feed = newsFeed[indexPath.row]
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // This will clear the selection if user select the cell
+        if let selectionIndexPath = self.tableView.indexPathForSelectedRow {
+            self.tableView.deselectRow(at: selectionIndexPath, animated: true)
+        }
+    }
 
     
     // MARK:- Pull to refresh

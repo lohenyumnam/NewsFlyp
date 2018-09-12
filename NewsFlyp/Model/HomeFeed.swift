@@ -28,6 +28,7 @@ struct Feed: Codable {
     let createdOn: String
     let fav: String
     let lk: String
+    let xUrl: String?
     
     enum CodingKeys: String, CodingKey {
         case id = "id"
@@ -41,5 +42,6 @@ struct Feed: Codable {
         case createdOn = "created_on"
         case fav = "fav"
         case lk = "lk"
+        case xUrl = "xUrl"
     }
 }
