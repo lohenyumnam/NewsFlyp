@@ -42,40 +42,23 @@ class HomeTableViewController: UITableViewController {
 //            tableView.estimatedRowHeight = 88
 //            tableView.rowHeight = UITableViewAutomaticDimension
 //        }
+        // Setting Up Infinity Scroll
         DispatchQueue.main.async {
-            
             // Set custom indicator
             self.tableView.infiniteScrollIndicatorView = CustomInfiniteIndicator(frame: CGRect(x: 0, y: 0, width: 24, height: 24))
-            
             // Set custom indicator margin
             self.tableView.infiniteScrollIndicatorMargin = 10
-            
             // Set custom trigger offset
             self.tableView.infiniteScrollTriggerOffset = 0 //500
         }
         
         // Add infinite scroll handler (fetch the data here for next pages)
         tableView.addInfiniteScroll { [weak self] (tableView) -> Void in
-//            self?.performFetch {
-//                tableView.finishInfiniteScroll()
-//            }
-            
             self?.getHomeFeedData()
         }
-        
-        // Uncomment this to provide conditionally prevent the infinite scroll from triggering
-        /*
-         tableView.setShouldShowInfiniteScrollHandler { [weak self] (tableView) -> Bool in
-         // Only show up to 5 pages then prevent the infinite scroll
-         return (self?.currentPage < 5);
-         }
-         */
-        
-        // load initial data
-        DispatchQueue.main.async {
-            self.tableView.beginInfiniteScroll(true)
 
-        }
+        // load initial data
+        DispatchQueue.main.async { self.tableView.beginInfiniteScroll(true) }
     }
 
     override func didReceiveMemoryWarning() {
@@ -165,7 +148,6 @@ class HomeTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // This will clear the selection if user select the cell
         if let selectionIndexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRow(at: selectionIndexPath, animated: true)

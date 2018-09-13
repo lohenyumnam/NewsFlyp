@@ -13,7 +13,7 @@
 		6C03234421422AEB006D34AF /* CustomInfiniteIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C03234321422AEA006D34AF /* CustomInfiniteIndicator.swift */; };
 		6C03234621423BE6006D34AF /* FetchResultStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C03234521423BE6006D34AF /* FetchResultStatus.swift */; };
 		6C1E3C0A214A5713001DCBBA /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E3C09214A5713001DCBBA /* VideoCell.swift */; };
-		6C1E3C0C214A582D001DCBBA /* VideoFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E3C0B214A582D001DCBBA /* VideoFeed.swift */; };
+		6C1E3C0E214A60D8001DCBBA /* DataFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C1E3C0D214A60D8001DCBBA /* DataFeed.swift */; };
 		6C51C5562142A42100AAFDCD /* UIScrollView+InfiniteScroll.m in Sources */ = {isa = PBXBuildFile; fileRef = 6C51C5542142A42100AAFDCD /* UIScrollView+InfiniteScroll.m */; };
 		6C82866D213FA08E002E03A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C82866C213FA08E002E03A7 /* AppDelegate.swift */; };
 		6C828672213FA08E002E03A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6C828670213FA08E002E03A7 /* Main.storyboard */; };
@@ -36,7 +36,7 @@
 		6C03234321422AEA006D34AF /* CustomInfiniteIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomInfiniteIndicator.swift; sourceTree = "<group>"; };
 		6C03234521423BE6006D34AF /* FetchResultStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FetchResultStatus.swift; path = ../FetchResultStatus.swift; sourceTree = "<group>"; };
 		6C1E3C09214A5713001DCBBA /* VideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
-		6C1E3C0B214A582D001DCBBA /* VideoFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoFeed.swift; sourceTree = "<group>"; };
+		6C1E3C0D214A60D8001DCBBA /* DataFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFeed.swift; sourceTree = "<group>"; };
 		6C51C5542142A42100AAFDCD /* UIScrollView+InfiniteScroll.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+InfiniteScroll.m"; sourceTree = "<group>"; };
 		6C51C5552142A42100AAFDCD /* UIScrollView+InfiniteScroll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+InfiniteScroll.h"; sourceTree = "<group>"; };
 		6C51C5572142A45B00AAFDCD /* NewsFlyp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NewsFlyp-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -160,7 +160,7 @@
 				6C03234521423BE6006D34AF /* FetchResultStatus.swift */,
 				6C828689213FC1EA002E03A7 /* ApiURL.swift */,
 				6C82868B213FC29A002E03A7 /* HomeFeed.swift */,
-				6C1E3C0B214A582D001DCBBA /* VideoFeed.swift */,
+				6C1E3C0D214A60D8001DCBBA /* DataFeed.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -308,8 +308,8 @@
 				6C82868C213FC29A002E03A7 /* HomeFeed.swift in Sources */,
 				6C03234621423BE6006D34AF /* FetchResultStatus.swift in Sources */,
 				6C82868A213FC1EA002E03A7 /* ApiURL.swift in Sources */,
+				6C1E3C0E214A60D8001DCBBA /* DataFeed.swift in Sources */,
 				6C03085821452CF600D92437 /* DetailsTableViewController.swift in Sources */,
-				6C1E3C0C214A582D001DCBBA /* VideoFeed.swift in Sources */,
 				6C1E3C0A214A5713001DCBBA /* VideoCell.swift in Sources */,
 				6C828687213FC121002E03A7 /* NetworkController.swift in Sources */,
 				6C828684213FA47F002E03A7 /* HomeTableViewController.swift in Sources */,

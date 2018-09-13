@@ -35,3 +35,6 @@ changeLog 13Sep_2:24PM
 1. Now share button works on HomeFeed.
 2. UI for video added.
 
+changeLog 13Sep_5:00PM
+1. Videos Feed Added.
+2. Now Likes text shows "like" if its lest then 0 (Zero) 

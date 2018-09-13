@@ -64,7 +64,8 @@ class HomeFeedTableViewCell: UITableViewCell {
             sourceLabel.text = feed.source
             categoriesLabel.text = feed.category
             createdOn.text = feed.createdOn
-            likes.text = "\(feed.likes) likes"
+            //likes.text = "\(feed.likes) likes"
+            likes.text = Int(feed.likes)! > 1 ? "\(feed.likes) likes" : "\(feed.likes) like"
             
             if feed.lk == "YES" {
                 favButton.setImage(UIImage(named: "Fav"), for: .normal)
@@ -76,7 +77,7 @@ class HomeFeedTableViewCell: UITableViewCell {
             
             
         }
-    }
+    } // End OF updateCellUI
     
     @IBAction func favButtonTapped(_ sender: UIButton) {
         print("Fav button Tapped")
