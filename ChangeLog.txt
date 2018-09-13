@@ -27,3 +27,11 @@ changeLog 9Sep_10:32AM
 changeLog 12Sep_2:57 PM
 1. News Now show in greater details when tap on the tableView cell
 2. Now able to open the new via safariViewController
+
+changeLog 12Sep_4:45 PM
+1. now share button are implemented at News details View
+
+changeLog 13Sep_2:24PM
+1. Now share button works on HomeFeed.
+2. UI for video added.
+

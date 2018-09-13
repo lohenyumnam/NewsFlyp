@@ -139,16 +139,14 @@ class HomeTableViewController: UITableViewController {
     
 
     // MARK: - Table view data source
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
         return newsFeed.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "newCell", for: indexPath) as! HomeFeedTableViewCell
-        cell.updateCellUI(feed: newsFeed[indexPath.row])
+        cell.updateCellUI(with: newsFeed[indexPath.row], self)
        return cell
     }
   

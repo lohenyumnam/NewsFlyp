@@ -23,6 +23,9 @@ class HomeFeedTableViewCell: UITableViewCell {
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var likeButton: UIButton!
     
+    var newFeed: Feed?
+    weak var homeViewController: HomeTableViewController?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -42,10 +45,14 @@ class HomeFeedTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func updateCellUI(feed: Feed?) -> () {
+    func updateCellUI(with feed: Feed?,_ homeViewController: HomeTableViewController?) -> () {
         
+        if let vc = homeViewController {
+            self.homeViewController = vc
+        }
         
         if let feed = feed {
+            self.newFeed = feed
             // Downloading and setting image for cover Image
             if let url = URL(string: feed.mURL) {
                 let resource = ImageResource(downloadURL: url)
@@ -78,6 +85,18 @@ class HomeFeedTableViewCell: UITableViewCell {
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
         print("share Button tapped")
+        
+        guard let newsID = newFeed?.id else { return }
+//        print("share")
+        guard let homeVC = homeViewController else { return }
+        if let url = URL(string: ApiURL.getFeedByIDForWeb.rawValue)?.withQueries(["id": newsID]) {
+            let vc = UIActivityViewController(activityItems: [url], applicationActivities: [])
+            homeVC.present(vc, animated: true)
+        }
+//        if let shareURL = URL(string: url) {
+//            let vc = UIActivityViewController(activityItems: [shareURL], applicationActivities: [])
+//            homeViewController.present(vc, animated: true)
+//        }
     }
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         print("Likes Button tapped")

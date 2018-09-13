@@ -19,9 +19,10 @@ class DetailsTableViewController: UITableViewController {
     @IBOutlet weak var likesLabel: UILabel!
     @IBOutlet weak var favButton: UIButton!
     @IBOutlet weak var likesButton: UIButton!
+    @IBOutlet weak var shareBarButton: UIBarButtonItem!
+    @IBOutlet weak var readMoreButton: UIButton!
     
     var feed: Feed?
-    //var newsID: String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,27 +30,25 @@ class DetailsTableViewController: UITableViewController {
         if let feed = feed { self.displayData(with: feed) } // Display the old data
         
         self.tableView.separatorStyle = .none
+        
+        // will disable share and read more if no news url found
+        shareBarButton.isEnabled = false
+        readMoreButton.isEnabled = false
     }
     
     func fetchData(by id : String) {
         NetworkController.shared.fetchFeed(withID: id) { (feed, fetchResultStatus) in
             switch fetchResultStatus {
-                
             case .success :
                 if let feed = feed?.first {
                     self.displayData(with: feed) // Displaying new data
                     self.feed = feed
                 }
-                
             case .fail :
                 print("No Data")
-                
             case .noInternetOrServerError :
                 print("Network failled")
-                
-            }
-            
-            
+             }
         }
     }
     
@@ -60,12 +59,13 @@ class DetailsTableViewController: UITableViewController {
                 let resource = ImageResource(downloadURL: url)
                 self.coverImage.kf.setImage(with: resource)
             }
+            self.navigationItem.title = feed.source
             
             self.titleLabel.text = feed.title
             self.descriptionLabel.text = feed.description
             self.categoriesLabel.text = feed.category
             
-            self.navigationItem.title = feed.source
+            
             self.createdOnLabel.text = feed.createdOn
             self.likesLabel.text = "\(feed.likes) likes"
             
@@ -76,12 +76,16 @@ class DetailsTableViewController: UITableViewController {
             if feed.fav == "YES" {
                 self.likesButton.setImage(UIImage(named: "Liked"), for: .normal)
             }
+            
+            if let _ = feed.xUrl {
+                //will enable share button as soon as news url found
+                self.shareBarButton.isEnabled = true
+                self.readMoreButton.isEnabled = true
+                
+                print("Button Enable")
+            }
         }
     }
-//}
-
-
-    
 
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         print("likes Button Tapped")
@@ -98,40 +102,26 @@ class DetailsTableViewController: UITableViewController {
         
     }
     
+    @IBAction func shareBarButtonTapped(_ sender: UIBarButtonItem) {
+        guard let urlString = feed?.xUrl else { return }
+        if let shareURL = URL(string: urlString) {
+            let vc = UIActivityViewController(activityItems: [shareURL], applicationActivities: [])
+            present(vc, animated: true)
+        }
+    }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         // This will clear the selection if user select the cell
         if let selectionIndexPath = self.tableView.indexPathForSelectedRow {
             self.tableView.deselectRow(at: selectionIndexPath, animated: true)
         }
     }
-
 }
 
 extension DetailsTableViewController: SFSafariViewControllerDelegate {
+    
+    // Open The news in safariViewController
     func openSafariWebView(with id : String){
-        
-//        let query: [String: String] = [
-//            "id" : "\(id)", //news ID
-//        ]
-        
-//        guard let baseUrl = URL(string: ApiURL.getFeedByID.rawValue) else { print("Invalid base URL"); return}
-        
-//        if let url = baseUrl.withQueries(query) {
-//            if #available(iOS 11.0, *) {
-//                let config = SFSafariViewController.Configuration()
-//                config.entersReaderIfAvailable = true
-//                let safariVC = SFSafariViewController(url: url, configuration: config)
-//                present(safariVC, animated: true, completion: nil)
-//            } else {
-//                // Fallback on earlier versions
-//                let vc = SFSafariViewController(url: url, entersReaderIfAvailable: true)
-//                vc.delegate = self
-//
-//                present(vc, animated: true)
-//            }
-//        }
         
         if let urlString = feed?.xUrl, let url = URL(string: urlString) {
             if #available(iOS 11.0, *) {
